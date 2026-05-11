@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>論緣堂｜生肖運勢週報 5/11–5/17</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #7C1B18;
+  --red-bright: #EF0905;
+  --cream: #F9F5F2;
+  --blue: #8394B1;
+  --pink: #F0A0D3;
+  --white: #ffffff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Serif TC', serif;
+  background: var(--cream);
+  color: #1a1a1a;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--red);
+  padding: 28px 24px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.header-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: contain;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--red);
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+.header-brand-text {}
+.header-brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 5px;
+  display: block;
+}
+.header-brand-sub {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 4px;
+  display: block;
+  margin-top: 2px;
+}
+.header-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 5px;
+  margin-bottom: 12px;
+}
+.header-date-pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+/* ── SECTION CARD ── */
+.section-card {
+  background: #fff;
+  margin: 12px 12px 0;
+  border-radius: 16px;
+  padding: 20px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--red);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 16px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+/* Bullet items */
+.bullet-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #333;
+  letter-spacing: 0.3px;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.dot-red { background: var(--red); }
+.dot-blue { background: var(--blue); }
+.dot-bright { background: var(--red-bright); }
+.dot-navy { background: #3d5a80; }
+.dot-rose { background: #9b4da0; }
+
+/* ── ZODIAC GRID ── */
+.zodiac-section {
+  margin: 12px 12px 0;
+}
+.zodiac-section-title {
+  font-size: 13px;
+  letter-spacing: 4px;
+  font-weight: 400;
+  color: #888;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.zodiac-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.zodiac-btn {
+  background: #fff;
+  border: 1.5px solid rgba(124,27,24,0.15);
+  border-radius: 12px;
+  padding: 14px 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+.zodiac-btn:active { transform: scale(0.96); }
+.zodiac-btn.active {
+  background: var(--red);
+  border-color: var(--red);
+}
+.zodiac-char {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+  transition: color 0.2s;
+}
+.zodiac-btn.active .zodiac-char { color: #fff; }
+.zodiac-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #888;
+  transition: color 0.2s;
+}
+.zodiac-btn.active .zodiac-label { color: rgba(255,255,255,0.75); }
+
+/* ── FORTUNE EXPAND ── */
+.fortune-expand {
+  margin: 10px 12px 0;
+  display: none;
+  animation: fadeSlideIn 0.3s ease;
+}
+.fortune-expand.open { display: block; }
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fortune-header {
+  background: var(--red);
+  border-radius: 16px 16px 0 0;
+  padding: 20px 22px 18px;
+  position: relative;
+  overflow: hidden;
+}
+.fortune-header-watermark {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 110px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  pointer-events: none;
+}
+.fortune-header-sub {
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 4px;
+}
+.fortune-header-name {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: #fff;
+}
+
+.fortune-body {
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  padding: 16px 18px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.fortune-item {
+  margin-bottom: 12px;
+}
+.fortune-item:last-child { margin-bottom: 0; }
+
+.fortune-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.tag-love    { background: var(--red); }
+.tag-work    { background: var(--red); }
+.tag-money   { background: var(--red); }
+.tag-health  { background: var(--red); }
+.tag-lucky   { background: var(--red-bright); }
+.tag-dot-pink {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+  flex-shrink: 0;
+}
+
+.fortune-content {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.82;
+  color: #333;
+  letter-spacing: 0.3px;
+  padding-left: 4px;
+}
+
+/* Caution pill */
+.caution-area {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(124,27,24,0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+.caution-main {
+  background: var(--blue);
+  color: #fff;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.caution-date {
+  background: rgba(131,148,177,0.12);
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  border-radius: 20px;
+  padding: 4px 11px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.no-caution-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  margin-top: 20px;
+  padding: 28px 24px 36px;
+  background: var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.footer-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--red);
+  margin-bottom: 4px;
+  letter-spacing: 0;
+}
+.footer-brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 5px;
+}
+.footer-sub {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+.footer-line-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #06C755;
+  color: #fff;
+  border-radius: 25px;
+  padding: 11px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-decoration: none;
+  margin-top: 6px;
+  transition: opacity 0.2s;
+}
+.footer-line-btn:active { opacity: 0.85; }
+.line-icon { font-size: 20px; }
+
+/* bottom spacer */
+.bottom-spacer { height: 20px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+<header class="site-header">
+  <div class="header-brand">
+    <div class="header-logo">緣</div>
+    <div class="header-brand-text">
+      <span class="header-brand-name">論 緣 堂</span>
+      <span class="header-brand-sub">緹 點 迷 津</span>
+    </div>
+  </div>
+  <div class="header-title">生 肖 運 勢 週 報</div>
+  <div class="header-date-pill">2025．5 / 11 – 5 / 17</div>
+</header>
+
+<!-- ══════════════════════════════
+     節氣提醒
+══════════════════════════════ -->
+<div class="section-card">
+  <div class="section-title">本 週 節 氣 提 醒</div>
+  <ul class="bullet-items">
+    <li class="bullet-item"><span class="dot dot-red"></span><span>台灣進入梅雨季，濕熱天氣容易讓身體受濕風寒，務必注意氣溫變化與防寒保暖</span></li>
+    <li class="bullet-item"><span class="dot dot-red"></span><span>本週能量主題：「在變局中抓住價值重心，用靈活方式改寫規則」</span></li>
+    <li class="bullet-item"><span class="dot dot-red"></span><span>週三（5/13）是本週破局關鍵日，建議嘗試打破一件日常慣性小事，有助引進卡住的才氣與創意</span></li>
+    <li class="bullet-item"><span class="dot dot-red"></span><span>週日（農曆四月初一）：家中有拜拜習慣的朋友，記得準備供品表達心意</span></li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════
+     本週重點提醒
+══════════════════════════════ -->
+<div class="section-card">
+  <div class="section-title">本 週 重 點 提 醒</div>
+  <ul class="bullet-items">
+    <li class="bullet-item"><span class="dot dot-red"></span><span>週一：宜祈福開光、嫁娶安床、火化入殮</span></li>
+    <li class="bullet-item"><span class="dot dot-blue"></span><span>週二：宜祈福祭祀、動土起基上樑，也可剪髮剪指甲除穢</span></li>
+    <li class="bullet-item"><span class="dot dot-bright"></span><span>週三：凶神干擾明顯，不宜交易斡旋，宜拆除裝潢、鹽浴去角質除穢</span></li>
+    <li class="bullet-item"><span class="dot dot-navy"></span><span>週四：宜搬家入宅（早上9–11點最佳）、動土、開渠放水、祈福</span></li>
+    <li class="bullet-item"><span class="dot dot-red"></span><span>週五：宜祈福開光、動土安床、就醫調理、出貨納財、火化安葬</span></li>
+    <li class="bullet-item"><span class="dot dot-blue"></span><span>週六：不宜動刀、看病、動土，宜會親友、出行，少吃牛肉保運勢</span></li>
+    <li class="bullet-item"><span class="dot dot-rose"></span><span>週日：女性鳳凰吉日，宜出行、嫁娶、開市納財，不宜入宅上樑</span></li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════
+     生肖選擇格
+══════════════════════════════ -->
+<div class="zodiac-section">
+  <div class="zodiac-section-title">點選生肖 查看完整運勢</div>
+  <div class="zodiac-grid" id="zodiacGrid">
+    <button class="zodiac-btn" data-zodiac="鼠" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">鼠</span>
+      <span class="zodiac-label">屬 鼠</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="牛" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">牛</span>
+      <span class="zodiac-label">屬 牛</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="虎" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">虎</span>
+      <span class="zodiac-label">屬 虎</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="兔" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">兔</span>
+      <span class="zodiac-label">屬 兔</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="龍" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">龍</span>
+      <span class="zodiac-label">屬 龍</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="蛇" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">蛇</span>
+      <span class="zodiac-label">屬 蛇</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="馬" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">馬</span>
+      <span class="zodiac-label">屬 馬</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="羊" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">羊</span>
+      <span class="zodiac-label">屬 羊</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="猴" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">猴</span>
+      <span class="zodiac-label">屬 猴</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="雞" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">雞</span>
+      <span class="zodiac-label">屬 雞</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="狗" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">狗</span>
+      <span class="zodiac-label">屬 狗</span>
+    </button>
+    <button class="zodiac-btn" data-zodiac="豬" onclick="toggleZodiac(this)">
+      <span class="zodiac-char">豬</span>
+      <span class="zodiac-label">屬 豬</span>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     運勢展開區
+══════════════════════════════ -->
+<div class="fortune-expand" id="fortuneExpand">
+  <div class="fortune-header">
+    <div class="fortune-header-watermark" id="fortuneWatermark">鼠</div>
+    <div class="fortune-header-sub">生 肖 運 勢 週 報 ・ 5/11–5/17</div>
+    <div class="fortune-header-name" id="fortuneTitle">屬 鼠</div>
+  </div>
+  <div class="fortune-body" id="fortuneBody">
+    <!-- dynamically filled -->
+  </div>
+</div>
+
+<div class="bottom-spacer"></div>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-logo">緣</div>
+  <div class="footer-brand">論 緣 堂</div>
+  <div class="footer-sub">緹 點 迷 津</div>
+  <a href="https://lin.ee/TGwMGWU" class="footer-line-btn" target="_blank">
+    <span class="line-icon">💬</span>
+    加入 LINE 官方帳號
+  </a>
+</footer>
+
+<script>
+const FORTUNES = {
+  鼠: {
+    love: '男生維持穩定；女生有良好異性緣，加上長輩與女性貴人推動，可提高脫單機率。本週適合說走就走的旅行或與另一半共同嘗試新事物，兩人打破慣性生活習慣，感情會更深刻。',
+    work: '展現積極樂觀態度，即使出現意外狀況，也因貴人與長官大力相助交出耀眼成績。本週直覺提高，判斷精準，適合居家辦公或整頓家族企業資產布局，之前的投資開始見到成果並形成新現金流。',
+    money: '之前投資開始見到成果。財富主要來自不動產或家族，適合以物易物或變賣舊物，不妨也針對居家布置做些更新來起好運。',
+    health: '維持元氣滿滿即可。留意胸腔與肺部，梅雨季注意空氣品質，避免過敏或上呼吸道不適。',
+    lucky: '根基不穩的時候，正是重整重建最好的時機點。展現熱情幽默與老少咸宜的好人緣，配合龍生肖貴人與長輩助力廣結善緣。',
+    caution: []
+  },
+  牛: {
+    love: '男生維持穩定；女生對伴侶有不安全感，懷疑與尖銳言語容易造成感情波折。本週感情不穩定但精彩，可能來得快去得也快，享受當下的火花即可；週三前後對話容易點燃情感火花，在意外場合心動也很正常。',
+    work: '容易鑽牛角尖、一意孤行聽不進建議，雖有獨特想法卻難獲支持，只能交出及格成績。但創造力噴發，非常適合業務或企劃推出新產品或方案，投資眼光精準，對新興科技或創意產業敏感度極高。',
+    money: '不要與親朋好友有金錢往來，以免財務損失。投資眼光佳，適合對感興趣領域小試身手，但留意槓桿。',
+    health: '容易失眠，小心腸胃問題。留意心臟負荷，適度運動排解壓力，做能讓自己進入心流的事情。',
+    lucky: '快樂與心流是本週最重要的開運關鍵。做好情緒管理，展現團體精神，配合雞生肖貴人與長官助力拓展人際。',
+    caution: []
+  },
+  虎: {
+    love: '男生要避免與伴侶冷戰，缺乏溝通讓誤會加深容易造成感情波折；女生有良好異性緣，月老與女性貴人相助，有意願即可提高脫單機率。感情細節藏在日常瑣事裡，把對方的小缺陷當成可愛的點，就不容易心累。',
+    work: '按部就班、腳踏實地前進，配合耐心細心與長官大力支持，不斷超越障礙，交出漂亮耀眼成績。本週適應力極強，哪怕流程或環境突然變更都不是問題；有利於建立新工作習慣與技術創新，帶來額外收入。',
+    money: '財務謹慎保守，避免隨意投資帶來損失。技術與專業創新有利於接外快，打破慣性小事可引進卡住的才氣。',
+    health: '維持飽滿精神即可。預防急症，留意突發性發炎或意外扭傷，出門在外務必多加注意。',
+    lucky: '亂中有序，才能找回節奏、穩住好運。展現寬大胸襟與溫和有禮態度，配合馬生肖貴人助力拓展人際。',
+    caution: []
+  },
+  兔: {
+    love: '不論男女都有強旺異性緣，但良莠不齊需智慧分辨。本週合作對象或感情關係可能面臨突發變動，誠實面對彼此真實需求，方向還是能往好的方向發展；靈活調整心態，對手也可能是你的貴人。',
+    work: '容易受突發事件影響措手不及造成延遲，交出及格成績。合作對象可能突然變卦或換人接洽，這反而可能帶來新機會；分紅相關事項要多留個心眼，注意財務合約重新確認。',
+    money: '收支均衡。透過合夥人或伴侶多溝通，財運較容易有機會，留意分紅合約的確認。',
+    health: '維持元氣滿滿即可。留意情緒起伏導致內分泌失調或睡眠不穩定。',
+    lucky: '靈活調整心態，因為對手也有可能是你本週的貴人。做好情緒管理，展現風趣幽默，配合狗生肖貴人助力拓展人際。',
+    caution: []
+  },
+  龍: {
+    love: '男女均維持穩定。本週直覺強烈，可能在夢中或潛意識中感受到他人的思念，或與久未蒙面的舊友意外重逢。週五後溝通更直球踏實，一句「我在這裡」比任何花言巧語更能穩住對方的心。',
+    work: '展現專業與良好領導能力，即使遭遇突發事件也能處變不驚有條不紊，創造優異亮眼成績。適合整合他人資源、共同處理債務或棘手問題，讓大家一起幫你出面想方法，以比較好的方式解決。',
+    money: '收支均衡（過路財神）。偏財運極強，容易有意外紅包、佣金或退款等消息，多加留意。',
+    health: '維持飽滿精神即可。留意泌尿與排泄系統，養成多喝水、勿憋尿的習慣。',
+    lucky: '擁抱深度才能換取真正的信任。展現團隊精神與平易近人作風，配合鼠生肖貴人與長輩助力拓展人際。',
+    caution: []
+  },
+  蛇: {
+    love: '男生喜歡自由生活，感情漸漸淡出；女生維持穩定。本週適合安排旅行（遠近皆可）或學術交流，在這樣的互動中感情自然深化火花四射，單身者也更容易在這類場合遇到志同道合的對象。',
+    work: '雖然活力充沛，但行事魯莽衝動造成工作疏失，幸憑堅持態度與長官助力仍能及格。本週非常適合安排進修、跨界合作或規劃出國，讓視野大開。',
+    money: '小心意外造成財務損失。適合外匯投資或長線布局，不用過度在意短線波動。',
+    health: '容易頭痛，血光不弱，開車務必遵守交通規則保持距離。留意對新食物的適應力較低，飲食不要貪多嘗鮮。',
+    lucky: '你的心有多大，世界就有多大。保持情緒平和、柔軟身段，應對進退不過分魯莽，配合雞生肖貴人與長官助力維持穩定人際。',
+    caution: ['週三 日沖諸事不宜', '週日 避磁場不好之地', '⚠ 週三需特別留意']
+  },
+  馬: {
+    love: '不論男女都有強旺異性緣，同時得到月老與貴人相助，可提高脫單機率。本週職場形象與感情有連動，優質形象自然帶來優質桃花，展現好的一面相當重要。',
+    work: '雖然心態過於輕鬆自在不夠積極，但良好運勢仍帶來優異工作表現。本週職位職責可能出現變化，適合承接新責任或換賽道；名聲隨職業提升帶來財富，是爭取績效獎金的好時機。',
+    money: '有敏銳第六感在金融市場獲不錯報酬。正財運極旺，非常適合談薪資與爭取績效獎金。',
+    health: '維持元氣滿滿即可。留意心血管與脊椎壓力，適合保健運動，保持心情平穩。',
+    lucky: '你的專業度決定你在職場的高度。保持積極樂觀，展現合宜應對進退，配合虎生肖貴人助力廣結善緣。',
+    caution: []
+  },
+  羊: {
+    love: '男生有強旺異性緣，加上月老與土地公千層相助，有意願即可提高脫單機率；女生喜愛自在生活，感情漸漸淡出。社交場合容易遇到讓你眼前一亮的獨特對象，多去這類場子。',
+    work: '心思飄散、受外在環境影響導致工作出差錯，但堅持心態與長官助力仍帶來及格成績。本週合作夥伴或朋友中可能出現意外大貴人，他們的引薦與資訊可能改變你現有局勢。偏財運非常適合透過社群媒體或流量變現。',
+    money: '積極拓展業務即有意外收穫。偏財運佳，非常適合透過社群媒體或流量來變現，人脈就是財脈。',
+    health: '維持元氣滿滿即可。留意下肢血液循環，避免久坐，若從事需久站的工作請多穿彈力褲保護。',
+    lucky: '廣結善緣，因為驚喜就在人群當中。做好情緒管理，展現和群態度，配合馬生肖貴人與土地公助力拓展人際。',
+    caution: []
+  },
+  猴: {
+    love: '不論男女都維持穩定，無大改變。本週非常適合享受兩人世界的安靜，感情偏向隱秘低調，無須強求熱鬧。',
+    work: '行事草率粗心大意造成工作阻礙，即使長官同事大力相助也難以力挽狂瀾，整體表現不如人意。但本週非常適合幕後研究、靈性工作或深度市場調研，低調布局才是最強競爭力。',
+    money: '只要不過於貪心，在金融市場有不錯報酬率。適合處理保險或遺產等隱形資產，低調理財為主。',
+    health: '皮膚容易過敏，小心意外與刀刃傷害。留意睡眠品質，容易受外部集體能量干擾，適合冥想或念經安定心神。',
+    lucky: '慢下腳步，看清誰才是真心對待你的人。保持言行合一，避免情緒大起大落，配合鼠生肖貴人支持拓展人際。',
+    caution: ['週二 避磁場不好之地', '週四 小心意外與刀刃傷害', '⚠ 週六需特別留意']
+  },
+  雞: {
+    love: '男生有強旺異性緣但以爛桃花居多，不小心應對感情容易受傷；女生有良好異性緣，加上長輩相助，有意願可提高脫單機率。本週直白反而讓你更迷人，非常適合打破沉默告白；週末藝術或商務場合最容易遇到契合的靈魂。',
+    work: '展現強烈企圖心與良好管理及專業能力，配合貴人與長官助力交出優秀成績。本週仿佛最佳代言人，任何提案皆無往不利，適合啟動大計畫；同時也適合處理複雜財務清算、理財規劃或報稅事項。',
+    money: '收支均衡（過路財神）。財運回流，適合處理複雜財務清算，也可進行理財規劃。',
+    health: '腸胃不佳，小心腹瀉；開車遵守交通規則保持距離。留意喉嚨保養，避免過度用嗓或感冒咳嗽。',
+    lucky: '相信你內心的聲音，它能帶給你更多能量。維持熱情樂觀態度，展現風趣幽默，配合龍生肖貴人與長輩助力拓展人際。',
+    caution: ['週三 避磁場不好之地', '週日 日沖諸事不宜', '⚠ 週日需特別留意']
+  },
+  狗: {
+    love: '男生有強旺異性緣，積極主動加上長官助力可提高脫單機率；女生喜愛自由，感情漸漸淡出。本週感情可能被意外消息衝擊，學會擁抱不確定性，對對方無法接受的習慣，要認真思考是否能接納。',
+    work: '樂觀向上、勇於面對挑戰，配合專業能力與貴人助力不斷超越障礙，交出漂亮耀眼成績。本週技術與技能面需要更新，適合惡補新科技或軟體；卡關計畫會因靈光一現而瞬間打通，發言在會議中極具分量。',
+    money: '積極拓展業務越有意外收益。財運主要轉向非傳統領域，適合週五後針對合約或資源分配進行談判，對方會更願意心服口服。',
+    health: '維持元氣滿滿即可。留意神經系統放鬆，預防肌肉抽筋，冷氣房注意保暖。',
+    lucky: '變動並不是威脅，而是對你升級的邀請。多參與團體活動，配合馬生肖貴人與長輩助力拓展人際。',
+    caution: []
+  },
+  豬: {
+    love: '男生要多關懷伴侶，過於疏離容易造成感情波折；女生有強旺異性緣，加上長輩與月老牽線，有意願即可提高脫單機率。本週關係裡可能有意外反轉，多溝通處理，話說清楚比拐彎抹角更有力。',
+    work: '活力充沛、樂觀積極，即使遭遇意外也能全力以赴達成任務，交出優異亮眼成績。溝通方式面臨大變革，觀點更容易吸引大眾甚至對手；本週適合提案、簡報、演講，財運靠資訊差與創意點子。',
+    money: '進出平衡。財運靠資訊差與創意點子，適合短線交易或訊息交換，把話說透讓旌旗變旌喜。',
+    health: '留意內分泌與泌尿系統。留意手臂與肩膀，進行擴胸或松肩運動，避免因緊張導致四肢僵硬。',
+    lucky: '把想法說出來，周遭世界就會因你的需求而開始改變。提振自信，展現平易近人作風，配合虎生肖貴人與土地公助力廣結善緣。',
+    caution: ['週五 避磁場不好之地', '週日 小心意外與刀刃傷害', '⚠ 週三需特別留意']
+  }
+};
+
+let currentZodiac = null;
+
+function toggleZodiac(btn) {
+  const z = btn.dataset.zodiac;
+  const expand = document.getElementById('fortuneExpand');
+
+  // De-activate all
+  document.querySelectorAll('.zodiac-btn').forEach(b => b.classList.remove('active'));
+
+  if (currentZodiac === z) {
+    // Same one clicked → collapse
+    currentZodiac = null;
+    expand.classList.remove('open');
+    return;
+  }
+
+  // New one clicked
+  currentZodiac = z;
+  btn.classList.add('active');
+  expand.classList.add('open');
+
+  // Fill header
+  document.getElementById('fortuneWatermark').textContent = z;
+  document.getElementById('fortuneTitle').textContent = '屬 ' + z;
+
+  // Fill body
+  const data = FORTUNES[z];
+  const body = document.getElementById('fortuneBody');
+  
+  const cauHTML = data.caution.length > 0
+    ? `<div class="caution-area">
+        <span class="caution-main">⚠ 注 意 日</span>
+        ${data.caution.filter(c => !c.startsWith('⚠')).map(c => `<span class="caution-date">${c}</span>`).join('')}
+        ${data.caution.filter(c => c.startsWith('⚠')).map(c => `<span class="caution-date" style="color:#EF0905;border-color:#EF0905;">${c.replace('⚠ ','')}</span>`).join('')}
+       </div>`
+    : `<div class="caution-area"><span class="no-caution-text">✦ 本週無需特別留意天數</span></div>`;
+
+  body.innerHTML = `
+    <div class="fortune-item">
+      <div class="fortune-tag tag-love"><span class="tag-dot-pink"></span>感 情 運 勢</div>
+      <div class="fortune-content">${data.love}</div>
+    </div>
+    <div class="fortune-item">
+      <div class="fortune-tag tag-work">工 作 運 勢</div>
+      <div class="fortune-content">${data.work}</div>
+    </div>
+    <div class="fortune-item">
+      <div class="fortune-tag tag-money">財 運 提 醒</div>
+      <div class="fortune-content">${data.money}</div>
+    </div>
+    <div class="fortune-item">
+      <div class="fortune-tag tag-health">健 康 狀 況</div>
+      <div class="fortune-content">${data.health}</div>
+    </div>
+    <div class="fortune-item">
+      <div class="fortune-tag tag-lucky">好 運 方 法</div>
+      <div class="fortune-content">${data.lucky}</div>
+    </div>
+    ${cauHTML}
+  `;
+
+  // Scroll to expand area
+  setTimeout(() => {
+    expand.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+</script>
+</body>
+</html>
